@@ -9,6 +9,7 @@ import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import { Item, LinkTo as Link } from "./listItemsStyled";
 
+// const mainItems =[{text:"Inicio",route:"/home",icon:""},{}]
 export const mainListItems = (
   <>
     <Link to="/home">

@@ -80,6 +80,14 @@ const useStyles = makeStyles((theme) => ({
     fixedHeight: {
       height: 240,
     },
+    menuUser:{
+      borderRadius:"50%",
+      background: "#FA583B",
+      color: "#ffffff",
+      minWidth:"48px",
+      fontSize: "22px",
+      fontWeight: "bold",
+    }
   }));
   
 export {useStyles}
