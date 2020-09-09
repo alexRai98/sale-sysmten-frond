@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
-import { AppBar, Toolbar, Typography, IconButton } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Button,
+} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useStyles } from "./dashboardStyled";
 import UserMenu from "./userMenu";
+import Login from "../session/login/login";
 
 export default function Barr({ onOpen, open }) {
   const classes = useStyles();
+  const [showLogin, setShowLogin] = useState(false);
+
+  const handleClickOpen = () => {
+    setShowLogin(!showLogin);
+  };
 
   return (
     <AppBar
@@ -32,6 +44,10 @@ export default function Barr({ onOpen, open }) {
         >
           Tech Solutions
         </Typography>
+        <Button variant="contained" color="primary" onClick={handleClickOpen}>
+          Login
+        </Button>
+        <Login open={showLogin} handleClickOpen={handleClickOpen} />
         <UserMenu />
       </Toolbar>
     </AppBar>
