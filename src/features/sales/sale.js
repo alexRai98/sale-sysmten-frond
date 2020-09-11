@@ -1,10 +1,13 @@
 import React from 'react';
+import {ContainerSale} from './saleStyled'
+import {Input} from '@material-ui/core'
 
-function Sale (){
+export default function Sale (){
 
     return(
-        <h1>Sale</h1>
+        <ContainerSale>
+            
+
+        </ContainerSale>
     )
 }
-
-export default Sale

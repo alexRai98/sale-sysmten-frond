@@ -8,8 +8,8 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
     },
     toolbar: {
-      paddingRight: 24, // keep right padding when drawer closed
-      // backgroundColor: '#4FD1C5'
+      paddingRight: 24, 
+      backgroundColor: '#3E7CE9',
     },
     toolbarIcon: {
       display: 'flex',
