@@ -6,7 +6,6 @@ import Sale from './features/sales/sale'
 function App() {
   return (
     <Router>
-
       <DashBoard>
         <Switch>
           <Route exact path="/sale" component={Sale} />

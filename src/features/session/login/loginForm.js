@@ -1,37 +1,29 @@
-import React, { useState } from "react";
-import { Formik, useField } from "formik";
+import React from "react";
+import { Formik, useField, Form } from "formik";
 import * as Yup from "yup";
-import {
-  Button,
-  TextField,
-  FormControl,
-  InputAdornment,
-  InputLabel,
-  Input,
-  IconButton,
-  DialogActions
-} from "@material-ui/core";
-import {Visibility,VisibilityOff} from '@material-ui/icons'
-import {FormLogin} from './loginStyled'
-
+import { DialogActions, Button,CircularProgress } from "@material-ui/core";
+  import {CustomTextField} from './loginStyled'
+ 
 function FullField(props) {
+ 
   const [field, meta] = useField(props);
   const error = meta.error && meta.touched;
   return (
-    <FormControl>
-      <TextField id="standard-basic" {...field} {...props} helperText={error}/>
-    </FormControl>
+    <div>
+      {error ? (
+        <CustomTextField style={{marginTop:"15px"}} error {...field} {...props} helperText={meta.error} fullWidth/>
+      ) : (
+        <CustomTextField color="teal" style={{marginTop:"15px"}} {...field} {...props} fullWidth/>
+      )}
+    </div>
   );
 }
 
-export default function LoginForm() {
-  const hundlerSubmit = async (values) => {
+function LoginForm() {
+  const hundlerSubmit = (values) => {
     console.log(values);
   };
-  const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
+
   return (
     <Formik
       initialValues={{
@@ -44,37 +36,19 @@ export default function LoginForm() {
       })}
       onSubmit={hundlerSubmit}
     >
-      <FormLogin >
-        <FullField label="User" name="userName" type="text" />
-        <FormControl >
-          <InputLabel htmlFor="standard-adornment-password">
-            Password
-          </InputLabel>
-          <Input
-            id="standard-adornment-password"
-            type={showPassword ? "text" : "password"}
-            name="password"
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                >
-                  {showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </FormControl>
-        <DialogActions>
-          <Button color="primary">
-          Go to sign up
+      <Form>
+        <FullField label="User Name" name="userName" type="text" />
+
+        <FullField label="Password" name="password" type="password" />
+        <DialogActions style={{marginTop:"20px"}}>
+          <Button style={{fontWeight:"bold",textTransform:"none"}} >Go to Signup</Button>
+          <Button variant="contained" type="submit" color="primary" style={{backgroundColor:"#26a69a",fontWeight:"bold", textTransform:"none"}} >
+            Sign in
+            <CircularProgress style={{animationDuration:"700ms",color:"#ffffff"}} size={20} />
           </Button>
-          <Button type="submit" color="primary">
-          Sign in
-          </Button>
-        </DialogActions>       
-      </FormLogin>
+        </DialogActions>
+      </Form>
     </Formik>
   );
 }
+export default LoginForm;

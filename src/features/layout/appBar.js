@@ -29,7 +29,6 @@ export default function Barr({ onOpen, open }) {
         <IconButton
           edge="start"
           color="inherit"
-          aria-label="open drawer"
           onClick={onOpen}
           className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
         >
